@@ -72,7 +72,7 @@ export const getPlatformDescription = (): string => {
 
 export const getAppId = (): number => {
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
-        | { staging: number; production: number }
+        | { staging: string | number; production: string | number }
         | undefined;
     if (!app_id) return 16929;
     return isProduction() ? app_id.production : app_id.staging;
