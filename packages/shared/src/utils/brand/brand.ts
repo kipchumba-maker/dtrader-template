@@ -70,12 +70,17 @@ export const getPlatformDescription = (): string => {
     return ((config_data.platform as Record<string, unknown>).description as string) ?? '';
 };
 
-export const getAppId = (): number => {
+export const getAppId = (): string => {
+    // Changed return type to string
     const app_id = (config_data as Record<string, unknown> & typeof config_data).app_id as
         | { staging: string | number; production: string | number }
         | undefined;
-    if (!app_id) return 16929;
-    return isProduction() ? app_id.production : app_id.staging;
+
+    // Fallback to string if missing (using the old numeric ID as a string fallback)
+    if (!app_id) return '16929';
+
+    // Cast the final result explicitly to a string so it satisfies the return type safely
+    return String(isProduction() ? app_id.production : app_id.staging);
 };
 // [/AI]
 
