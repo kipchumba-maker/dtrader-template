@@ -60,4 +60,4 @@ const ServerTime = (() => {
     };
 })();
 
-module.exports = ServerTime;
+export default ServerTime;

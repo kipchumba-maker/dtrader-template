@@ -97,4 +97,4 @@ const NetworkMonitorBase = (() => {
     };
 })();
 
-module.exports = NetworkMonitorBase;
+export default NetworkMonitorBase;
