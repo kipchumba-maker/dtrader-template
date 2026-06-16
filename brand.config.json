@@ -2,7 +2,7 @@
   "brand_name": "KogoX Softwares",
   "brand_logo": "brand/platform-logo.svg",
   "brand_logo_dark": "brand/platform-logo.svg",
-  "brand_domain": "kogox.software",
+  "brand_domain": "pages.dev",
   "brand_hostname": {
     "staging": "staging.trader.kogox.software",
     "production": "dtrader-template-7jb.pages.dev"
@@ -11,23 +11,23 @@
     "name": "KogoX Trader",
     "description": "A whole new trading experience on a powerful yet easy to use platform.",
     "logo": "brand/platform-logo.svg",
-    "home_url": "https://home.kogox.software/dashboard",
-    "help_centre_url": "https://kogox.software/help"
+    "home_url": "https://dtrader-template-7jb.pages.dev/dashboard",
+    "help_centre_url": "https://dtrader-template-7jb.pages.dev/help"
   },
   "signup_url": {
-    "production": "https://home.kogox.software/dashboard/signup",
-    "staging": "https://staging-home.kogox.software/dashboard/signup"
+    "production": "https://dtrader-template-7jb.pages.dev/dashboard/signup",
+    "staging": "https://staging-home.deriv.com/dashboard/signup"
   },
   "deposit_url": {
     "staging": "https://staging.trader.kogox.software/transfer",
-    "production": "https://trader.kogox.software/transfer"
+    "production": "https://dtrader-template-7jb.pages.dev/transfer"
   },
   "auth": {
     "staging": "https://staging-auth.deriv.com",
     "production": "https://auth.deriv.com",
     "oauth_scopes": ["trade", "account_manage"],
     "oauth_redirect_uri_staging": "https://staging.trader.kogox.software",
-    "oauth_redirect_uri_production": "https://trader.kogox.software",
+    "oauth_redirect_uri_production": "https://dtrader-template-7jb.pages.dev",
     "oauth_app_id": "33yR82s9Ed9d4TOFdMWho"
   },
   "derivws": {
