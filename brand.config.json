@@ -5,7 +5,7 @@
   "brand_domain": "kogox.software",
   "brand_hostname": {
     "staging": "staging.trader.kogox.software",
-    "production": "trader.kogox.software"
+    "production": "dtrader-template-7jb.pages.dev"
   },
   "platform": {
     "name": "KogoX Trader",
@@ -43,8 +43,8 @@
     "production": "api.deriv.com"
   },
   "app_id": {
-    "staging": "33yR82s9Ed9d4TOFdMWho",
-    "production": "33yR82s9Ed9d4TOFdMWho"
+    "staging": 36544,
+    "production": 1411
   },
   "colors": {
     "primary": "#118e1c",
