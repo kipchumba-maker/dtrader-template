@@ -11,17 +11,17 @@
     "name": "KogoX Trader",
     "description": "A whole new trading experience on a powerful yet easy to use platform.",
     "logo": "brand/platform-logo.svg",
-    "home_url": "https://dtrader-template-7jb.pages.dev/dashboard",
-    "help_centre_url": "https://dtrader-template-7jb.pages.dev/help"
-  },
-  "signup_url": {
-    "production": "https://dtrader-template-7jb.pages.dev/dashboard/signup",
-    "staging": "https://staging-home.deriv.com/dashboard/signup"
-  },
-  "deposit_url": {
-    "staging": "https://staging.trader.kogox.software/transfer",
-    "production": "https://dtrader-template-7jb.pages.dev/transfer"
-  },
+    "home_url": "https://track.deriv.com/_jqd7qq_27591/1/",
+    "help_centre_url": "https://deriv.com/help-centre"
+},
+"signup_url": {
+    "production": "https://track.deriv.com/_jqd7qq_27591/1/",
+    "staging": "https://track.deriv.com/_jqd7qq_27591/1/"
+},
+"deposit_url": {
+    "staging": "https://app.deriv.com/cashier/deposit",
+    "production": "https://app.deriv.com/cashier/deposit"
+},
   "auth": {
     "staging": "https://staging-auth.deriv.com",
     "production": "https://auth.deriv.com",
