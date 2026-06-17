@@ -33,7 +33,6 @@ type TBottomWidgetsParams = {
 const BottomWidgetsMobile = observer(({ digits, tick }: TBottomWidgetsParams) => {
     const { setDigitStats, setTickData } = useTraderStore();
 
-    // Using bottom widgets in V2 to get tick data for all trade types and to get digit stats for Digit trade types
     React.useEffect(() => {
         setTickData(tick);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,12 +40,9 @@ const BottomWidgetsMobile = observer(({ digits, tick }: TBottomWidgetsParams) =>
 
     React.useEffect(() => {
         setDigitStats(digits);
-        // For digits array, which is coming from SmartChart, reference is not always changing.
-        // As it is the same, this useEffect was not triggered on every array update.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [digits.join('-')]);
 
-    // render no bottom widgets on chart
     return null;
 });
 
@@ -90,7 +86,7 @@ const TradeChart = observer(() => {
     const timeoutsMapRef = React.useRef<Map<number, NodeJS.Timeout>>(new Map());
     const settings = {
         countdown: is_chart_countdown_visible,
-        isHighestLowestMarkerEnabled: false, // TODO: Pending UI,
+        isHighestLowestMarkerEnabled: false,
         language: current_language.toLowerCase(),
         position: is_chart_layout_default ? 'bottom' : 'left',
         theme: is_dark_mode_on ? 'dark' : 'light',
@@ -110,7 +106,6 @@ const TradeChart = observer(() => {
         [onChange]
     );
 
-    // Use centralized SmartCharts adapter hook
     const { chartData, isLoading, error, getQuotes, subscribeQuotes, unsubscribeQuotes, retryFetchChartData } =
         useSmartChartsAdapter({
             debug: false,
@@ -130,11 +125,9 @@ const TradeChart = observer(() => {
 
     const barriers: ChartBarrierStore[] = main_barrier ? [main_barrier, ...extra_barriers] : extra_barriers;
 
-    // max ticks to display for mobile view for tick chart
     const max_ticks =
         granularity === 0 ? CHART_CONSTANTS.MAX_TICKS_MOBILE_TICK : CHART_CONSTANTS.MAX_TICKS_MOBILE_CANDLE;
 
-    // Filter positions based on current symbol and contract type
     const filtered_positions = all_positions.filter(
         p =>
             isContractSupportedAndStarted(symbol, p.contract_info) &&
@@ -150,17 +143,14 @@ const TradeChart = observer(() => {
                 : filterByContractType(p.contract_info, contract_type))
     );
 
-    // Get IDs of closed positions to auto-remove
     const closed_positions_ids =
         filtered_positions &&
         filtered_positions.filter(position => position.contract_info?.is_sold).map(p => p.contract_info.contract_id);
 
-    // Automatically remove closed positions after 8 seconds
     React.useEffect(() => {
         const timeoutsMap = timeoutsMapRef.current;
         const currentClosedIds = new Set(closed_positions_ids);
 
-        // Start timers for newly closed positions
         closed_positions_ids.forEach(positionId => {
             if (!timeoutsMap.has(Number(positionId))) {
                 const timeout = setTimeout(() => {
@@ -171,7 +161,6 @@ const TradeChart = observer(() => {
             }
         });
 
-        // Clear timers for positions that are no longer in the closed list
         timeoutsMap.forEach((timeout, positionId) => {
             if (!currentClosedIds.has(positionId)) {
                 clearTimeout(timeout);
@@ -181,7 +170,6 @@ const TradeChart = observer(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [closed_positions_ids]);
 
-    // Cleanup all timeouts on unmount
     React.useEffect(() => {
         const timeoutsMap = timeoutsMapRef.current;
         return () => {
@@ -254,7 +242,6 @@ const TradeChart = observer(() => {
                 allowTickChartTypeOnly={show_digits_stats || is_accumulator}
                 stateChangeListener={chartStateChange}
                 symbol={symbol}
-                // Enable chart native TopWidgets for desktop, keep hidden for mobile
                 topWidgets={isMobile ? () => <div /> : topWidgets}
                 isConnectionOpened={is_socket_opened}
                 clearChart={false}
@@ -270,6 +257,8 @@ const TradeChart = observer(() => {
                 yAxisMargin={{
                     top: isMobile ? CHART_CONSTANTS.Y_AXIS_MARGIN_MOBILE : CHART_CONSTANTS.Y_AXIS_MARGIN_DESKTOP,
                 }}
+                crosshair={isMobile ? 0 : 2}
+                isCrosshairActive
                 isLive
                 leftMargin={
                     !isMobile && active_sidebar_flyout
