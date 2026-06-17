@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { isDesktopOs, isTabletOs } from '@deriv/shared';
 import { useDevice } from '@deriv-com/ui';
-
-import { ChartMode, DrawTools, Share, StudyLegend, ToolbarWidget, Views } from 'Modules/SmartChart';
+import { ChartMode, CrosshairToggle, DrawTools, Share, StudyLegend, ToolbarWidget, Views } from 'Modules/SmartChart';
 
 type TToolbarWidgetsProps = {
     position?: string;
@@ -13,7 +11,7 @@ type TToolbarWidgetsProps = {
 
 const ToolbarWidgets = ({ position, updateChartType, updateGranularity }: TToolbarWidgetsProps) => {
     const { isMobile } = useDevice();
-    const is_real_desktop_device = isDesktopOs() && !isTabletOs; // in a tablet simulator on desktop, isDesktopOs returns true
+    const is_real_desktop_device = isDesktopOs() && !isTabletOs;
 
     return (
         <ToolbarWidget position={position || (isMobile ? 'bottom' : null)}>
@@ -30,6 +28,7 @@ const ToolbarWidgets = ({ position, updateChartType, updateGranularity }: TToolb
                 />
             )}
             <DrawTools portalNodeId='modal_root' />
+            {!isMobile && <CrosshairToggle />}
             {is_real_desktop_device && !isMobile && <Share portalNodeId='modal_root' />}
         </ToolbarWidget>
     );

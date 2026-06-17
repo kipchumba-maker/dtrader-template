@@ -10,6 +10,7 @@ export {
     ChartTitle,
     ChartSize,
     ChartMode,
+    CrosshairToggle,
     DrawTools,
     Share,
     StudyLegend,
