@@ -257,7 +257,7 @@ const TradeChart = observer(() => {
                 yAxisMargin={{
                     top: isMobile ? CHART_CONSTANTS.Y_AXIS_MARGIN_MOBILE : CHART_CONSTANTS.Y_AXIS_MARGIN_DESKTOP,
                 }}
-                crosshair={isMobile ? 0 : 2}
+                crosshair={1}
                 isCrosshairActive
                 isLive
                 leftMargin={
