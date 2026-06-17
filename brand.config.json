@@ -2,7 +2,7 @@
   "brand_name": "KogoX Softwares",
   "brand_logo": "brand/platform-logo.svg",
   "brand_logo_dark": "brand/platform-logo.svg",
-  "brand_domain": "pages.dev",
+  "brand_domain": "kogox.software",
   "brand_hostname": {
     "staging": "staging.trader.kogox.software",
     "production": "dtrader-template-7jb.pages.dev"

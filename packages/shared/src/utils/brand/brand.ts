@@ -22,9 +22,8 @@ export const isProduction = (): boolean => {
     if (typeof window === 'undefined') return false;
     const hostname = window.location.hostname;
     const production_hostname = config_data.brand_hostname.production;
-    return hostname === production_hostname;
+    return hostname === production_hostname || hostname === 'dtrader-template-7jb.pages.dev';
 };
-
 export const getBrandHostname = () => {
     const hostname = isProduction() ? config_data.brand_hostname.production : config_data.brand_hostname.staging;
     return substituteDerivDomain(hostname);
